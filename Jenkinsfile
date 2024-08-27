@@ -1,7 +1,5 @@
 node {
-    stage('Checkout') {
-        checkout scm
-    }
+    checkout scm
 
     stage('Build') {
         docker.image('python:2-alpine').inside {
