@@ -4,6 +4,7 @@ node {
             sh 'python --version'
             sh 'echo "Hello"'
             sh 'ls -R'
+            sh 'pwd'
             sh 'python -m py_compile sources/add2vals.py sources/calc.py'
         }
     }
