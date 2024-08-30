@@ -15,7 +15,7 @@ node {
     }
 
     stage ('Deploy') {
-        docker.image('cdrx/pyinstaller-linux:python2').inside(--user root) {
+        docker.image('cdrx/pyinstaller-linux:python2').inside('--user root') {
             sh 'apk add --no-cache binutils'
             sh 'pip install --upgrade pip'
             sh 'pip install pyinstaller'
