@@ -14,7 +14,16 @@ node {
         }
     }
 
-    stage ('Deploy') {
+    stage('ManualApproval') {
+        def userInput = input message: 'Lanjutkan ke tahap Deploy?', parameters: [booleanParam(defaultValue: false, description: 'Klik Yes untuk melanjutkan', name: 'Proceed')]
+        if (userInput) {
+            echo 'Deploying...'
+        } else {
+            error 'Approval dibatalkan'
+        }
+    }
+
+    stage('Deploy') {
         docker.image('python:3.7-alpine').inside('--user root') {
             sh 'apk add --no-cache binutils'
             sh 'pip install --upgrade pip'
