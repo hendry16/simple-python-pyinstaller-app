@@ -23,7 +23,7 @@ node {
             archiveArtifacts 'dist/add2vals'
             sh 'chmod +x dist/add2vals'
             sh 'sleep 60'
-            sh './dist/add2vals'
+            sh './dist/add2vals 50 60'
         }
     }
 }
