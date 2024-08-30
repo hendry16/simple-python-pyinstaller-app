@@ -15,7 +15,10 @@ node {
     }
 
     stage ('Deploy') {
-        docker.image('cdrx/pyinstaller-linux:python2').inside {
+        docker.image('cdrx/pyinstaller-linux:python2').inside(-u root) {
+            sh 'apk add --no-cache binutils'
+            sh 'pip install --upgrade pip'
+            sh 'pip install pyinstaller'
             sh 'pyinstaller --onefile sources/add2vals.py'
             archiveArtifacts 'dist/add2vals'
         }
