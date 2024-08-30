@@ -15,7 +15,7 @@ node {
     }
 
     stage('ManualApproval') {
-        def userInput = input message: 'Lanjutkan ke tahap Deploy?', parameters: [booleanParam(defaultValue: false, description: 'Klik Yes untuk melanjutkan', name: 'Proceed')]
+        def userInput = input message: 'Lanjutkan ke tahap Deploy?', parameters: [booleanParam(defaultValue: false, description: 'Centang "Yes" untuk melanjutkan', name: 'Yes')]
         if (userInput) {
             echo 'Deploying...'
         } else {
